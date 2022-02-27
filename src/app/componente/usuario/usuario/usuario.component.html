@@ -1,0 +1,45 @@
+<br>
+<br>
+<form class="form-inline">
+	<div class="form-group mx-sm-3 mb-2">
+		<input type="text" class="form-control" id="nome" name="nome" [(ngModel)]="nome"
+			placeholder="Pesquisa Por Nome">
+	</div>
+	<button type="button" (click)="consultaUsuario()" class="btn btn-primary mb-2">Buscar</button>
+	<button type="button" [routerLink]="['/usuarioAdd']" routerLinkActive="router-link-active"  
+	class="btn btn-success mb-2" style="margin-left: 5px;">Novo</button>
+</form>
+<br>
+<br>
+
+<table class="table">
+	<thead class="thead-dark">
+		<th>ID</th>
+		<th>Login</th>
+		<th>Nome</th>
+		<th>Delete</th>
+		<th>Editar</th>
+	</thead>
+<!--
+	<tbody>
+		<tr *ngFor="let student of students | paginate: {itemsPerPage:5, currentPage: p, totalItens: total}">
+			<td>{{student.id}}</td>
+			<td>{{student.login}}</td>
+			<td>{{student.nome}}</td>
+			<td><button (click)="deleteUsuario(student.id)" class="btn btn-primary">Delete</button></td>
+			<td><button [routerLink]="['/usuarioAdd', student.id]" routerLinkActive="router-link-active"
+					class="btn btn-warning">Editar</button></td>
+		</tr>
+	</tbody>
+-->
+
+
+</table>
+<!--
+<div class= "text-center">
+	<pagination-controls (pageChange)="carregarPagina(p = $event);" previousLabel="Voltar" nextLabel="Proxima" responsive="true"></pagination-controls>
+</div>
+
+-->
+
+

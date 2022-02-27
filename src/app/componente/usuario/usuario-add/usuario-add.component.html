@@ -1,0 +1,79 @@
+<h3 style="padding: 10px;">Tela de Usuario</h3>
+
+<form style="padding: 10px;" #formValidate="ngForm">
+	<div class="form-row">
+		<div class="form-group col-md-1">
+			<label for="id">ID</label>
+			<input type="text" [(ngModel)]="usuario.id" class="form-control" id="id" name="id" readonly
+				autocomplete="false">
+		</div>
+	</div>
+
+	<div class="form-row">
+		<div class="form-group col-md-12">
+			<label for="nome">Nome</label>
+			<span  style="color: red; font-size: 23px;" *ngIf="nomeValidate.invalid"> *</span>
+			<input type="text" [(ngModel)]="usuario.nome" #nomeValidate="ngModel" class="form-control" id="nome" name="nome"
+				autocomplete="false" required>
+		</div>
+	</div>
+
+	<div class="form-row">
+		<div class="form-group col-md-6">
+			<label for="login">Login</label>
+			<span  style="color: red; font-size: 23px;" *ngIf="loginValidate.invalid"> *</span>
+			<input type="text" [(ngModel)]="usuario.login" #loginValidate="ngModel" class="form-control" id="login" name="login"
+				autocomplete="false" required>
+		</div>
+		<div class="form-group col-md-6">
+			<label for="senha">Senha</label>
+			<span  style="color: red; font-size: 23px;" *ngIf="senhaValidate.invalid"> *</span>
+			<input type="password" [(ngModel)]="usuario.senha" #senhaValidate="ngModel" class="form-control" id="senha" name="senha"
+				autocomplete="false" required>
+		</div>
+	</div>
+	<div class="form-row">
+		<div class="form-group col-md-6">
+			<label for="cpf">CPF</label>
+			<span style="color: red; font-size: 23px;" *ngIf="cpfValidate.invalid">*</span>
+			<input type="text" [(ngModel)]="usuario.cpf" #cpfValidate="ngModel" class="form-control" id="cpf" name="cpf" required>
+		</div>
+	</div>
+
+	<div class="card text-center">
+		<div class="card-header">
+			Telefone Contato
+		</div>
+		<div class="card-body">
+			<div class="form-row">
+				<div clas="form-group col-md-3">
+					<input type="text" class="form-control"  [(ngModel)]="telefone.numero" id="numero" name="numero">
+				</div>
+				<div clas="form-group col-md-3">
+					<button class="btn btn-primary" style="margin-left: 10px;" (click)="addFone();">Adicionar</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<table class="table">
+		<tr *ngFor="let fone of usuario.telefones; let i = index">
+		<td>{{fone.idtelefone}}</td>
+		<td>{{fone.numero}}</td>
+		<td><button class="btn btn-danger" (click)="deletarTelefone(fone.idtelefone, i)">Delete</button></td>
+		</tr>
+	</table>
+
+
+
+	<div class="form-row">
+		<div class="form-group col-md-6">
+			<button type="button" class="btn btn-primary" [routerLink]="['/usuarioList']"
+				routerLinkActive="router-link-active">Voltar</button>
+			<button type="button" class="btn btn-success" (click)="novo()" style="margin: 3px">Novo</button>
+			<button type="button" class="btn btn-warning" [disabled]="formValidate.invalid" (click)="salvarUsuario()">Salvar</button>
+		</div>
+	</div>
+
+</form>
