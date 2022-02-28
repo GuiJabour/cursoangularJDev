@@ -36,7 +36,7 @@
 		<div class="form-group col-md-6">
 			<label for="cpf">CPF</label>
 			<span style="color: red; font-size: 23px;" *ngIf="cpfValidate.invalid">*</span>
-			<input type="text" [(ngModel)]="usuario.cpf" #cpfValidate="ngModel" class="form-control" id="cpf" name="cpf" required>
+			<input type="text" mask="000.000.000-00" [(ngModel)]="usuario.cpf" #cpfValidate="ngModel" class="form-control" id="cpf" name="cpf" required>
 		</div>
 	</div>
 
@@ -47,7 +47,7 @@
 		<div class="card-body">
 			<div class="form-row">
 				<div clas="form-group col-md-3">
-					<input type="text" class="form-control"  [(ngModel)]="telefone.numero" id="numero" name="numero">
+					<input type="text" mask="(00) 0 0000-0000" class="form-control"  [(ngModel)]="telefone.numero" id="numero" name="numero">
 				</div>
 				<div clas="form-group col-md-3">
 					<button class="btn btn-primary" style="margin-left: 10px;" (click)="addFone();">Adicionar</button>
@@ -60,7 +60,7 @@
 	<table class="table">
 		<tr *ngFor="let fone of usuario.telefones; let i = index">
 		<td>{{fone.idtelefone}}</td>
-		<td>{{fone.numero}}</td>
+		<td>{{fone.numero | mask: "(00) 0 0000-0000"}}</td>
 		<td><button class="btn btn-danger" (click)="deletarTelefone(fone.idtelefone, i)">Delete</button></td>
 		</tr>
 	</table>

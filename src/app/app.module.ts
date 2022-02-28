@@ -13,9 +13,8 @@ import { HttpInterceptorModule } from './service/header-interceptor.service';
 import { UsuarioComponent } from './componente/usuario/usuario/usuario.component';
 import { UsuarioAddComponent } from './componente/usuario/usuario-add/usuario-add.component';
 import { GuardiaoGuardService } from './service/guardiao.guard.service';
-//import { BrMaskerModule } from 'br-mask';
 import { NgxPaginationModule } from 'ngx-pagination';
-
+import { NgxMaskModule, IConfig } from 'ngx-mask';
 import { AppRoutingModule } from './app-routing.module';
 
 const appRouters: Routes = [
@@ -31,6 +30,7 @@ const appRouters: Routes = [
 
 export const routes: ModuleWithProviders<any> = RouterModule.forRoot(appRouters);
 
+export const options: Partial<IConfig> | (() => Partial<IConfig>) = {};
 
 @NgModule({
   declarations: [
@@ -47,7 +47,8 @@ export const routes: ModuleWithProviders<any> = RouterModule.forRoot(appRouters)
     HttpClientModule,
     routes,
     HttpInterceptorModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    NgxMaskModule.forRoot(options)
   ],
   providers: [],
   bootstrap: [AppComponent]
