@@ -11,35 +11,32 @@
 </form>
 <br>
 <br>
-
+<div class="table-responsive">
 <table class="table">
 	<thead class="thead-dark">
-		<th>ID</th>
-		<th>Login</th>
-		<th>Nome</th>
-		<th>Delete</th>
-		<th>Editar</th>
+		<th scope="col">ID</th>
+		<th scope="col">Login</th>
+		<th scope="col">Nome</th>   
+		<th scope="col">Delete</th>
+		<th scope="col">Editar</th>
 	</thead>
-<!--
+
 	<tbody>
-		<tr *ngFor="let student of students | paginate: {itemsPerPage:5, currentPage: p, totalItens: total}">
+		<tr *ngFor="let student of students | paginate: {itemsPerPage:5, currentPage: p, totalItems: total}; let i=index">
 			<td>{{student.id}}</td>
 			<td>{{student.login}}</td>
 			<td>{{student.nome}}</td>
-			<td><button (click)="deleteUsuario(student.id)" class="btn btn-primary">Delete</button></td>
+			<td><button (click)="deleteUsuario(student.id, i)" class="btn btn-primary">Delete</button></td>
 			<td><button [routerLink]="['/usuarioAdd', student.id]" routerLinkActive="router-link-active"
 					class="btn btn-warning">Editar</button></td>
 		</tr>
 	</tbody>
--->
-
-
 </table>
-<!--
-<div class= "text-center">
-	<pagination-controls (pageChange)="carregarPagina(p = $event);" previousLabel="Voltar" nextLabel="Proxima" responsive="true"></pagination-controls>
 </div>
 
--->
+<div class="text-center">
+	<pagination-controls (pageChange)="carregarPagina(p = $event)" previousLabel="Anterior" nextLabel="Próxima"></pagination-controls>
+</div>
+
 
 

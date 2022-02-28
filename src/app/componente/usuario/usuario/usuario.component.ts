@@ -12,10 +12,10 @@ export class UsuarioComponent implements OnInit {
 
   constructor(private usuarioService: UsuarioService) { }
 
-  students!: Observable<User[]>;
+  students!: Array<User>;
   nome!: String;
-  p!: Number;
-  total!: Number;
+  p!: number;
+  total!: number;
 
   ngOnInit() {
     this.usuarioService.getUsuarioList().subscribe(data => {
@@ -25,32 +25,69 @@ export class UsuarioComponent implements OnInit {
     });
 
   }
-  deleteUsuario(id: Number) {
+  deleteUsuario(id: Number, index: any) {
 
     if (confirm('Deseja mesmo remover?')) {
       this.usuarioService.deletarUsuario(id).subscribe(data => {
-        console.log("Retorno do Método Delete: " + data)
+        //console.log("Retorno do Método Delete: " + data)
 
-        this.usuarioService.getUsuarioList().subscribe(data => {
-          this.students = data;
-        });
+        this.students.splice(index, 1);
+
+        //this.usuarioService.getUsuarioList().subscribe(data => {
+        //  this.students = data;
+        // });
+
+
+
 
       });
     }
 
   }
   consultaUsuario() {
-    this.usuarioService.consultaUsuarioPorNome(this.nome).subscribe(data => {
-      this.students = data;
-    });
+    console.info(this.nome);
+
+    if (this.nome === '') {
+      this.usuarioService.getUsuarioList().subscribe(data => {
+        this.students = data.content;
+        this.total = data.totalElements;
+        console.info('Total de elementos: ' + this.total);
+      });
+    } else {
+      this.usuarioService.consultaUsuarioPorNome(this.nome).subscribe(data => {
+        this.students = data.content;
+        this.total = data.totalElements;
+      });
+    }
+
+
   }
-  
-  /*
-  carregarPagina(pagina){
+
+
+  carregarPagina(pagina: any) {
     console.info(pagina);
+
+
+    if (this.nome !== '') {
+      this.usuarioService.consultaUsuarioPorNomePorPage(this.nome, pagina - 1).subscribe(data => {
+        this.students = data.content;
+        this.total = data.totalElements;
+        console.info('Total de elementos: ' + this.total);
+      });
+    } else {
+      this.usuarioService.getUsuarioListPage(pagina - 1).subscribe(data => {
+        this.students = data.content;
+        this.total = data.totalElements;
+        console.info('Total de elementos: ' + this.total);
+      });
+    }
+
+
+
+
   }
-  */
-  
+
+
 
 
 

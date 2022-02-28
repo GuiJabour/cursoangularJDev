@@ -14,7 +14,7 @@ import { UsuarioComponent } from './componente/usuario/usuario/usuario.component
 import { UsuarioAddComponent } from './componente/usuario/usuario-add/usuario-add.component';
 import { GuardiaoGuardService } from './service/guardiao.guard.service';
 //import { BrMaskerModule } from 'br-mask';
-//import { NgxPaginationModule } from 'ngx-pagination';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 import { AppRoutingModule } from './app-routing.module';
 
@@ -47,6 +47,7 @@ export const routes: ModuleWithProviders<any> = RouterModule.forRoot(appRouters)
     HttpClientModule,
     routes,
     HttpInterceptorModule,
+    NgxPaginationModule
   ],
   providers: [],
   bootstrap: [AppComponent]
