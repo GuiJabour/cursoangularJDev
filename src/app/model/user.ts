@@ -9,7 +9,7 @@ export class User {
     senha!: String;
     cpf!:  string;
     dataNascimento!: String;
-
+    salario!: DoubleRange;
     profissao: Profissao = new Profissao();
     telefones!: Array<Telefone>;
 

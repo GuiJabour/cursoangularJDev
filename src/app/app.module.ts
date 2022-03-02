@@ -17,6 +17,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { NgxMaskModule, IConfig } from 'ngx-mask';
 import { AppRoutingModule } from './app-routing.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgxCurrencyModule } from 'ngx-currency';
 
 const appRouters: Routes = [
   { path: 'home', component: HomeComponent, canActivate: [GuardiaoGuardService] },
@@ -50,7 +51,8 @@ export const options: Partial<IConfig> | (() => Partial<IConfig>) = {};
     HttpInterceptorModule,
     NgxPaginationModule,
     NgxMaskModule.forRoot(options),
-    NgbModule
+    NgbModule,
+    NgxCurrencyModule
   ],
   providers: [],
   bootstrap: [AppComponent]
