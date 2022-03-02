@@ -15,8 +15,8 @@
 <table class="table">
 	<thead class="thead-dark">
 		<th scope="col">ID</th>
-		<th scope="col">Login</th>
-		<th scope="col">Nome</th>   
+		<th scope="col">Nome</th>
+		<th scope="col">CPF</th>   
 		<th scope="col">Delete</th>
 		<th scope="col">Editar</th>
 	</thead>
@@ -24,8 +24,8 @@
 	<tbody>
 		<tr *ngFor="let student of students | paginate: {itemsPerPage:5, currentPage: p, totalItems: total}; let i=index">
 			<td>{{student.id}}</td>
-			<td>{{student.login}}</td>
 			<td>{{student.nome}}</td>
+			<td>{{student.cpf | mask: '000.000.000-00'}}</td>
 			<td><button (click)="deleteUsuario(student.id, i)" class="btn btn-primary">Delete</button></td>
 			<td><button [routerLink]="['/usuarioAdd', student.id]" routerLinkActive="router-link-active"
 					class="btn btn-warning">Editar</button></td>

@@ -16,6 +16,7 @@ import { GuardiaoGuardService } from './service/guardiao.guard.service';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { NgxMaskModule, IConfig } from 'ngx-mask';
 import { AppRoutingModule } from './app-routing.module';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 const appRouters: Routes = [
   { path: 'home', component: HomeComponent, canActivate: [GuardiaoGuardService] },
@@ -48,7 +49,8 @@ export const options: Partial<IConfig> | (() => Partial<IConfig>) = {};
     routes,
     HttpInterceptorModule,
     NgxPaginationModule,
-    NgxMaskModule.forRoot(options)
+    NgxMaskModule.forRoot(options),
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]
