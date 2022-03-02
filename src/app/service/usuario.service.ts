@@ -23,6 +23,10 @@ export class UsuarioService {
     return this.http.get<any>(AppConstants.baseURL + id);
   }
 
+  getProfissaoList(): Observable<any> {
+    return this.http.get<any>(AppConstants.baseUrlPath + 'profissao/');
+  }
+
   deletarUsuario(id: Number): Observable<any> {
     return this.http.delete(AppConstants.baseURL + id, { responseType: 'text' })
   }
