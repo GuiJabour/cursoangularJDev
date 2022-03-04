@@ -64,7 +64,7 @@
 
 		<div class="form-group col-md-3">
 			<label for="salario">Salário</label>
-			<span style="color: red; font-size: 23px;" *ngIf="salarioValidate.invalid"> *</span>
+			<span style="color: red; font-size: 23px;"> *</span>
 			<input id="salario" class="form-control" name="salario"
 			 [(ngModel)]="usuario.salario" #salarioValidate="ngModel"
 			 currencyMask [options]="{prefix: 'R$', thousands: '.', decimal: ','}">

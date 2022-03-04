@@ -23,4 +23,8 @@ export class LoginComponent implements OnInit {
   public login() {
     this.loginService.login(this.usuario);
   }
+
+  public recuperar(){
+    this.loginService.recuperar(this.usuario);
+  }
 }

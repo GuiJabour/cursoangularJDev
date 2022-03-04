@@ -12,6 +12,26 @@ export class LoginServiceService {
 
   constructor(private http: HttpClient, private router: Router) { }
 
+  recuperar(usuario: { login: string; senha: string; }) {
+
+    let user = new User();
+    user.login = usuario.login;
+
+
+    return this.http.post(AppConstants.baseUrlPath + 'recuperar/', user).subscribe(data => {
+      /*Retorno HTTP*/
+     alert( JSON.parse(JSON.stringify(data)).error );
+
+    },
+      error => {
+        alert('Erro ao recuperar Login!');
+      }
+    );
+
+  }
+
+
+
   login(usuario: { login: string; senha: string; }) {
 
     return this.http.post(AppConstants.baseLogin, JSON.stringify(usuario)).subscribe(data => {
